@@ -23,6 +23,10 @@ public abstract class Student extends Actor
    public String standingFile; // image used when standing
    public String soundFile; //      firstName.toLowerCase()+lastName.toLowerCase()+".ext"; (.wav or .jpg)
    Classroom clas = (Classroom) getWorld();
+   
+   public void act() {
+       interactiveSC();
+   }
    public void setSeatX(int r){
        mySeatX=r;
     }
@@ -69,5 +73,20 @@ public abstract class Student extends Actor
         mySeatX=getX();
         mySeatY=getY();
     }
- 
+    public void interactiveSC()
+{
+
+
+    if (Greenfoot.isKeyDown("A"));
+    {
+	String absentQuestion = Greenfoot.ask("Who is absent? (Just the names)");
+        System.out.println(absentQuestion + "is/are absent");
+    } 
+    if (Greenfoot.isKeyDown("T"));
+    {
+	String tardyPeople = Greenfoot.ask("Who is tardy? (Just the names)");
+        System.out.println(tardyPeople + "is/are absent");
+    }
+}
+
 }

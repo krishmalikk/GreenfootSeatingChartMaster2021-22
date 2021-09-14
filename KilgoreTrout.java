@@ -44,8 +44,8 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
         mySeatX=1;
         mySeatY=1;
        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-       portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-       standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
+        portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
+        standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
         soundFile=firstName.toLowerCase()+ lastName.toLowerCase()+".wav";
         setImage(portraitFile);
         sitting=true;
@@ -59,7 +59,7 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
     {
         // Add your action code here.
         if(Greenfoot.mouseClicked(this)){
-          //  if (sitting){
+            if (sitting){
                 sitting=false;
                 setImage(standingFile);
                 System.out.println(""); // Print a blank line to create space between any student output.
@@ -75,6 +75,7 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
            
                 sitDown();
             }
+        }
         
     } 
     
