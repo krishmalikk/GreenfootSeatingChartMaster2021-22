@@ -32,6 +32,10 @@ public class Classroom extends World
 
         prepare();
     }
+    
+    public void act() {
+        interactiveSC();
+    }
 
     /**
      * Prepare the classroom desk layout.  This method should not be chanaged!. Refactored from prepare method.
@@ -142,17 +146,19 @@ public class Classroom extends World
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    
+
     private void prepare()
     {
         createDeskLayout();
- // Each student needs to create their specific instance following the KilgoreTrout example.
- // Your current seatX and seatY can be found by right clicking on the corresponding seat in the Classrom.
- // and then clicking on the inspect text
+        // Each student needs to create their specific instance following the KilgoreTrout example.
+        // Your current seatX and seatY can be found by right clicking on the corresponding seat in the Classrom.
+        // and then clicking on the inspect text
         KilgoreTrout kilgoretrout = new KilgoreTrout();
         addObject(kilgoretrout,2,3);
         kilgoretrout.assignSeat();
-  
+
+        KrishMalik krishMalik = new KrishMalik();
+        addObject(krishMalik,8,6);
     }
     
     public List<Student> getAllStudents(){
@@ -196,33 +202,46 @@ public class Classroom extends World
     
 
    public  void appendFile(String fname, String s){
-   {	
+   {    
       try{
-    	 
+         
         //Specify the file name and path here
-    	File file =new File(fname);
+        File file =new File(fname);
 
-    	/* This logic is to create the file if the
-    	 * file is not already present
-    	 */
-    	if(!file.exists()){
-    	   file.createNewFile();
-    	}
+        /* This logic is to create the file if the
+         * file is not already present
+         */
+        if(!file.exists()){
+           file.createNewFile();
+        }
 
-    	//Here true is to append the content to file
-    	FileWriter fw = new FileWriter(file,true);
-    	//BufferedWriter writer give better performance
-    	BufferedWriter bw = new BufferedWriter(fw);
-    	bw.write(s);
-    	//Closing BufferedWriter Stream
-    	bw.close();
+        //Here true is to append the content to file
+        FileWriter fw = new FileWriter(file,true);
+        //BufferedWriter writer give better performance
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(s);
+        //Closing BufferedWriter Stream
+        bw.close();
 
-	System.out.println("Data successfully appended at the end of file");
+    System.out.println("Data successfully appended at the end of file");
 
       }catch(IOException ioe){
          System.out.println("Exception occurred:");
-    	 ioe.printStackTrace();
+         ioe.printStackTrace();
        }
    }
 }
+public void interactiveSC()
+    {
+    if (Greenfoot.isKeyDown("A"));
+    {
+    String absentQuestion = Greenfoot.ask("Who is absent? (Just the names)");
+        System.out.println(absentQuestion + "is/are absent");
+    } 
+    if (Greenfoot.isKeyDown("T"));
+    {
+    String tardyPeople = Greenfoot.ask("Who is tardy? (Just the names)");
+        System.out.println(tardyPeople + "is/are absent");
+    }
+    }
 }
